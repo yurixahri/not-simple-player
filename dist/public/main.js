@@ -16,7 +16,7 @@ function play(name2 = '') {
     var folder = last_dir.split('/');
 
 
-	var cover = "https://ahrixthinh.xyz/Photos/default-cover.png"
+	var cover = ""
 	$(".file a").each((i,a) => {
         var name = $(a).text();
         var ext = name.split(".")[name.split(".").length - 1].trim()
