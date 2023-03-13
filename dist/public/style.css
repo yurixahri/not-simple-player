@@ -161,7 +161,7 @@ button:hover, .fa-backward:hover, .fa-forward:hover{
     background: transparent  !important;
     display: inline-block !important;
     position: relative !important;
-    bottom: 4px;
+    bottom: 4px !important;
 }
 .mejs__controls div {
     display: block !important;
