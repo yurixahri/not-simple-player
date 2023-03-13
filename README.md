@@ -5,8 +5,8 @@ An audio player for HFS v3. Comes with some features :
 - Draggable
 - Included a playlist of the playing folder
 - Some keys shortcut ( P: play/pause, < >: backward - forward, /: auto play)
-- Absolutely broken on mobile
 - A cover of the current album (if it has in the folder)
+- Absolutely broken on mobile
 
 Before using, add the custom.html to your server.
 
