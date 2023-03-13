@@ -44,7 +44,7 @@
 .music_list button{
     background: transparent;
     width: -webkit-fill-available;
-    color: #aaa;
+    color: var(--faint-contrast);
 }
 
 .music_list button:hover{
