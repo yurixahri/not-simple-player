@@ -161,7 +161,7 @@ button:hover, .fa-backward:hover, .fa-forward:hover{
     background: transparent  !important;
     display: inline-block !important;
     position: relative !important;
-    
+    bottom: 4px;
 }
 .mejs__controls div {
     display: block !important;
@@ -171,7 +171,6 @@ button:hover, .fa-backward:hover, .fa-forward:hover{
 .mejs__controls .mejs__playpause-button {
     position: absolute  !important;
     right: 45% !important;
-    top: -4px;
     width: 40px !important;
 }
 .mejs__controls .mejs__playpause-button button {
