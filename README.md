@@ -1,1 +1,12 @@
 # not-simple-player
+
+An audio player for HFS v3. Comes with some features :
+- Fancy ~
+- Draggable
+- Included a playlist of the playing folder
+- Some keys shortcut ( P: play/pause, < >: backward - forward, /: auto play)
+- Absolutely broken on mobile
+
+Before using, add the custom.html to your server.
+
+![image](https://user-images.githubusercontent.com/111081318/224752723-1076ce69-cd58-4721-aac3-06c6c75591d0.png)
