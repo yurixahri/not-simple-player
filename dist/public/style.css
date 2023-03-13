@@ -104,8 +104,8 @@
     bottom: 70% !important;
     position: relative !important;
     display: inline-block !important;
+    color: #999 !important;
     animation: move 20s infinite linear !important;
-    
 }
 
 @keyframes move{
