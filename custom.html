@@ -1,0 +1,39 @@
+[top]
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelementplayer.min.css" integrity="sha512-RZKnkU75qu9jzuyC+OJGffPEsJKQa7oNARCA6/8hYsHk2sd7Sj89tUCWZ+mV4uAaUbuzay7xFZhq7RkKFtP4Dw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jsmediatags/3.9.5/jsmediatags.min.js" integrity="sha512-YsR46MmyChktsyMMou+Bs74oCa/CDdwft7rJ5wlnmDzMj1mzqncsfJamEEf99Nk7IB0JpTMo5hS8rxB49FUktQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelement-and-player.min.js" integrity="sha512-g+VjFTbRd3S5dc1ZkPt3l/rnF5O+5MwWiwqbaXxQQ71l6pxUq/NNRUE/6fz32Kkcl2okiv6FjAtoNQNe+7xOaw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js" integrity="sha512-csNcFYJniKjJxRWRV1R7fvnXrycHP6qDR21mgz1ZP55xY5d+aHLfo9/FcGDQLfn2IfngbAHd8LdfsagcCqgTcQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+[bottom]
+<div class="contain" >
+            <div class="music-player">
+			    <div class="cover">
+                    <img src="" alt="">   
+          </div>
+				<div class="wrap-text">
+					<p id="aud-info">nothing has played yet</p>
+				</div>
+				<div class="btn">
+				    <button onclick="backward()" style="color: #aeaeae4d; background-color: transparent; border: none; display: block; padding: 0; position: absolute; left: 30%; top: 18.5%; z-index: 4;"><i class="fa fa-backward"></i></button>
+				    <button onclick="forward()" style="color: #aeaeae4d; background-color: transparent; border: none; display: block; padding: 0; position: absolute; left: 63%; top: 18.5%; z-index: 4;"><i class="fa fa-forward"></i></button>
+					<button id="auto-play" style="color: #aeaeae4d; background-color: transparent; border: none; display: block; padding: 0; position: absolute; left: 55%; bottom: 13.5%; z-index: 4;"><i class="fa fa-wheelchair-alt"></i></button>
+				</div>
+                <div class="lecteur">
+                    <audio class="fc-media" src="null" autoplay></audio>
+                </div>
+            </div>
+</div>
+
+<div class="music_list">
+	<div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--faint-contrast);">
+	  <span>nothing</span>
+	  <button id="hide"></button>
+	</div>
+	<div id="scroll">
+	  <ul id="list">
+	  </ul>
+	</div>
+  </div>
+
