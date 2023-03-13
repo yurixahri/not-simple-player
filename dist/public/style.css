@@ -183,7 +183,6 @@ button:hover, .fa-backward:hover, .fa-forward:hover{
     font-size: 23px !important;
     color: #c5c9d6 !important;
     background: transparent !important;
-    padding: 0 !important;
     margin: 0 !important;
     
 }
@@ -208,7 +207,6 @@ button:hover, .fa-backward:hover, .fa-forward:hover{
     color: #c5c9d6 !important;
     background: transparent !important;
     margin: 0 !important;
-    padding: 0 !important;
     
 }
 .mejs__controls .mejs__mute button:before {
