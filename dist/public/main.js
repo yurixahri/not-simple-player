@@ -4,60 +4,87 @@ HFS.onEvent('afterEntryName', ({ entry }, { h }) =>
 
 
 function play(name2 = '') {
-    const root = document.querySelector('.fc-media')
-    const audio = root.querySelector('audio')
-    var acc = name2.split('.');
-    acc.splice(-1);
-    acc = acc.join('.');
-    audio.src = encodeURIComponent(name2);
-    document.querySelector('#aud-info').innerText = acc.replace("%27","'").replace("%23","#")
+  const root = document.querySelector('.fc-media')
+  const audio = root.querySelector('audio')
+  var acc = name2.split('.');
+  acc.splice(-1);
+  acc = acc.join('.');
+  audio.src = encodeURIComponent(name2);
 	elem = document.querySelectorAll('.file a');
 	last_dir = location.href;
-    var folder = last_dir.split('/');
+  var folder = last_dir.split('/');
+
+  var cover = ""
+  $(".file a").each((i,a) => {
+    var name = $(a).text();
+    var ext = name.split(".")[name.split(".").length - 1].trim()
+    if (["jpg","png","jpeg","jfif"].includes(ext)){
+      cover = $(a).attr("href")
+      if (name !== null && name.toLowerCase().trim().includes("cover")) return false;
+    }
+   })
+
+  getmeta(encodeURIComponent(name2), cover, folder, acc)
 
 
-	var cover = ""
-	$(".file a").each((i,a) => {
-        var name = $(a).text();
-        var ext = name.split(".")[name.split(".").length - 1].trim()
-        if (["jpg","png","jpeg","jfif"].includes(ext)){
-           cover = $(a).attr("href")
-           if (name !== null && name.toLowerCase().trim().includes("cover")) return false;
-        }
-    })
-
-
-
-    $('div.cover img').attr('src', cover)
-    d.setProperty('--width-text', document.querySelector('#aud-info').offsetWidth/130*110 + '%');
-    list_append();
-    $('.music_list span').text(decodeURI(folder[folder.length-2]));
-    song_pos = check_pos(acc);
-    if (document.querySelector('.music_list #list').clientHeight <= 359){
-        $('.music_list #scroll').css('height', document.querySelector('.music_list #list').clientHeight+'px')
-    }else{$('.music_list #scroll').css('height', '360px')};
-    check3 = false;
-    $('.music_list #list li').removeAttr('style');
-    $('.music_list #list li').eq(song_pos).css('animation', 'fade 2s ease infinite alternate')
+  list_append();
+  song_pos = check_pos(acc);
+  if (document.querySelector('.music_list #list').clientHeight <= 359){
+    $('.music_list #scroll').css('height', document.querySelector('.music_list #list').clientHeight+'px')
+  }else{$('.music_list #scroll').css('height', '360px')};
+  check3 = false;
+  $('.music_list #list li').removeAttr('style');
+  $('.music_list #list li').eq(song_pos).css('animation', 'fade 2s ease infinite alternate')
 
 
 }
 
 function play_temp(order) {
-    var src = $(elem[order]).attr('href');
-    var acc = src.split('.');
-    acc.splice(-1);
-    acc = acc.join('.');
-    const root = document.querySelector('.fc-media')
-    const audio = root.querySelector('audio')
-    audio.src = last_dir + src;
-    document.querySelector('#aud-info').innerText = decodeURIComponent(acc);
+  var src = $(elem[order]).attr('href');
+  var acc = src.split('.');
+  acc.splice(-1);
+  acc = acc.join('.');
+  const root = document.querySelector('.fc-media')
+  const audio = root.querySelector('audio')
+  audio.src = last_dir + src;
+  var cover = "";
+  getmeta(src, cover, null, acc)
     
-    d.setProperty('--width-text', document.querySelector('#aud-info').offsetWidth/130*110 + '%');
-    
-    song_pos =  check_pos(acc);
-    $('.music_list #list li').removeAttr('style');
-    $('.music_list #list li').eq(song_pos).css('animation', 'fade 2s ease infinite alternate')
+  song_pos =  check_pos(acc);
+  $('.music_list #list li').removeAttr('style');
+  $('.music_list #list li').eq(song_pos).css('animation', 'fade 2s ease infinite alternate')
+}
+
+async function getmeta(name, cover, folder, acc){
+  var res = await fetch(last_dir + name)
+  var blob = await res.blob();
+
+  jsmediatags.read(blob, {
+    onSuccess: function(tag) {
+      if (tag.tags.title != null) acc = tag.tags.title;
+      if (tag.tags.album != null) {folder = tag.tags.album}
+      else {folder = decodeURI(folder[folder.length-2])};
+      if (tag.tags.picture != null) {
+        var data = tag.tags.picture.data;
+        var format = tag.tags.picture.format;
+        let base64String = "";
+        for (var i = 0; i < data.length; i++) {
+            base64String += String.fromCharCode(data[i]);
+        }
+        cover = `data:${data.format};base64,${btoa(base64String)}`;
+      }
+      $('div.cover img').attr('src', cover)
+      document.querySelector('#aud-info').innerText = decodeURIComponent(acc)
+      d.setProperty('--width-text', document.querySelector('#aud-info').offsetWidth/130*110 + '%');
+      $('.music_list span').text(folder);
+    },
+    onError: function(error) {
+      $('div.cover img').attr('src', cover)
+      document.querySelector('#aud-info').innerText = decodeURIComponent(acc)
+      d.setProperty('--width-text', document.querySelector('#aud-info').offsetWidth/130*110 + '%');
+      $('.music_list span').text(decodeURI(folder[folder.length-2]));
+    }
+  })
 }
 
 function list_append(){
