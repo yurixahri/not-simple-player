@@ -1,5 +1,5 @@
 exports.version = 1.3
-exports.description = "Not simple player - add the custom.html in the repo before using"
+exports.description = "Not simple player"
 exports.repo = "thinhthui/not-simple-player"
 exports.apiRequired = 8.1
 exports.frontend_js = [
