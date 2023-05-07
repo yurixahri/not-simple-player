@@ -8,6 +8,6 @@ An audio player for HFS v3. Comes with some features :
 - A cover of the current album (if it has in the folder)
 - Absolutely broken on mobile
 
-Before using, add the custom.html to your server.
+Before using, add the custom.html to your server (for old HFS version before 0.45)
 
 ![image](https://user-images.githubusercontent.com/111081318/224752723-1076ce69-cd58-4721-aac3-06c6c75591d0.png)
