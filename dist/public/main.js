@@ -95,6 +95,7 @@ async function getmeta(name, cover, folder, acc) {
   jsmediatags.read(blob, {
     onSuccess: function (tag) {
       if (tag.tags.title != null) acc = tag.tags.title;
+      if (tag.tags.artist != null) acc = tag.tags.artist + " - " + acc;
       if (tag.tags.album != null) { folder = tag.tags.album }
       else { folder = decodeURI(folder[folder.length - 2]) };
       if (tag.tags.picture != null) {
