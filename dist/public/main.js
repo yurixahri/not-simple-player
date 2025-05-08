@@ -1,5 +1,5 @@
 HFS.onEvent('afterEntryName', ({ entry, h }) =>
-  /mp3|wav|aac|ogg|flac/.test(entry.ext) &&
+  /mp3|wav|aac|ogg|flac|m4a/.test(entry.ext) &&
   HFS.h('button', { className: 'play-button', onClick: () => play(entry.n) }))
 
 HFS.onEvent('beforeHeader', () => `
