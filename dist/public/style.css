@@ -3,18 +3,48 @@
 	--autoplay-color : #aeaeae4d;
 }
 
-.fa-to-start:before {content: '\f049'}
-.fa-to-end:before {content: '\f050'}
-.fa-doc:before {content: '\f016'}
-.fa-spin6:before { content: '\f110'; }
+@font-face {
+  font-family: 'custom-icons';
+  src: url('fontello.woff2?87446016') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
 
-[class^="fa-"]:before, [class*=" fa-"]:before {
-    font-family: "Fontawesome" !important;
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "custom-icons";
+  font-style: normal;
+  font-weight: normal;
+  speak: never;
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1em;
+  margin-left: .2em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-to-start:before { content: '\e80e'; } /* '' */
+.icon-to-end:before { content: '\e80f'; } /* '' */
+.icon-play:before { content: '\e810'; } /* '' */
+.icon-pause:before { content: '\e811'; } /* '' */
+.icon-volume-up:before { content: '\e812'; } /* '' */
+.icon-volume-off:before { content: '\e800'; } /* '' */
+.icon-menu:before { content: '\e813'; } /* '' */
+.icon-wheelchair:before { content: '\f193'; } /* '' */
+
+.icon-wheelchair{
+    color : var(--autoplay-color);
+    transition: 0.3s !important;
 }
 
 .music_list #hide:before {
-    content: "\f0c9";
-    font-family: FontAwesome;
+    content: "\e813";
+    font-family: "custom-icons";
 }
 
 .music_list #hide {
@@ -92,10 +122,7 @@
     box-shadow: inset 0px 5px 10px 2px rgba(0,0,0,0.3) !important;
 }
 
-.fa-wheelchair-alt{
-    color : var(--autoplay-color);
-    transition: 0.3s !important;
-}
+
 
 #aud-info{
     width: fit-content !important;
@@ -178,21 +205,20 @@ button:hover, .fa-backward:hover, .fa-forward:hover{
     height: 40px !important;
     padding: 0 !important;
     border: 0 !important;
-    font-family: FontAwesome !important;
+    font-family: "custom-icons" !important;
     font-size: 23px !important;
     color: #c5c9d6 !important;
     background: transparent !important;
     margin: 0 !important;
-    
 }
 .mejs__controls .mejs__play button:before{
-    content:"\f04b" !important;
+    content:"\e810" !important;
 }
 .mejs__controls .mejs__pause button:before{
-    content:"\f04c" !important;
+    content:"\e811" !important;
 }
 .mejs__controls .mejs__playpause-button button::before{
-    content:"\f04b";
+    content:"\e810";
 }
 
 .mejs__controls .mejs__volume-button button {
@@ -201,7 +227,7 @@ button:hover, .fa-backward:hover, .fa-forward:hover{
     height: 40px !important;
     padding: 0 !important;
     border: 0 !important;
-    font-family: FontAwesome !important;
+    font-family: "custom-icons" !important;
     font-size: 20px !important;
     color: #c5c9d6 !important;
     background: transparent !important;
@@ -209,10 +235,10 @@ button:hover, .fa-backward:hover, .fa-forward:hover{
     
 }
 .mejs__controls .mejs__mute button:before {
-    content: "\f028" !important;
+    content: "\e812" !important;
 }
 .mejs__controls .mejs__unmute button:before {
-    content: "\f026" !important;
+    content: "\e800" !important;
 }
 .mejs__controls .mejs__time {
     width: 100% !important;

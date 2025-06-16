@@ -1,4 +1,4 @@
-exports.version = 1.4
+exports.version = 1.5
 exports.description = "Not simple player"
 exports.repo = "thinhthui/not-simple-player"
 exports.apiRequired = 8.1
@@ -12,5 +12,4 @@ exports.frontend_js = [
 exports.frontend_css = [
     'style.css',
     "https://cdnjs.cloudflare.com/ajax/libs/mediaelement/4.2.7/mediaelementplayer.min.css",
-    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css",
 ]
