@@ -132,8 +132,8 @@
 #aud-info{
     width: fit-content !important;
     font-size: 13px !important;
-    bottom: 30% !important;
-    position: relative !important;
+    margin: 0;
+    position: absolute;
     display: inline-block !important;
     color: #999 !important;
     animation: move 6s infinite linear !important;
