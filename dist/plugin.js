@@ -1,4 +1,4 @@
-exports.version = 1.5
+exports.version = 1.6
 exports.description = "Not simple player"
 exports.repo = "thinhthui/not-simple-player"
 exports.apiRequired = 8.1

@@ -9,11 +9,12 @@ HFS.onEvent('beforeHeader', () => `
                     <img src="" alt="">   
           </div>
 				<div class="wrap-text">
-					<p id="aud-info">nothing has played yet</p>
+					<p id="aud-info">Play songs by clicking<button class="play-button"></button></p>
 				</div>
 				<div class="btn">
 				    <button onclick="backward()" style="color: #aeaeae4d; background-color: transparent; border: none; display: block; padding: 0; position: absolute; left: 30%; top: 18.5%; z-index: 4;"><i class="icon-to-start"></i></button>
 				    <button onclick="forward()" style="color: #aeaeae4d; background-color: transparent; border: none; display: block; padding: 0; position: absolute; left: 63%; top: 18.5%; z-index: 4;"><i class="icon-to-end"></i></button>
+                    <button onclick="close_player()" title="Close player" style="color: #aeaeae4d; background-color: transparent; border: none; display: block; padding: 0; position: absolute; left: 75%; top: 18.5%; z-index: 4;"><i class="icon-close"></i></button>
 					<button id="auto-play" style="color: #aeaeae4d; background-color: transparent; border: none; display: block; padding: 0; position: absolute; left: 55%; bottom: 13.5%; z-index: 4;"><i class="icon-wheelchair"></i></button>
 				</div>
                 <div class="lecteur">
@@ -25,16 +26,40 @@ HFS.onEvent('beforeHeader', () => `
 <div class="music_list">
 	<div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--faint-contrast);">
 	  <span>nothing</span>
-	  <button id="hide"></button>
+      <div style="display: flex; flex-direction: row;">
+	    <button id="hide"></button>
+        <button onclick="close_playlist()" id = "close_playlist" title="Close playlist" style="margin-left: 0.5em;"><i class="icon-close"></i></button>
+      </div>
 	</div>
 	<div id="scroll">
 	  <ul id="list">
 	  </ul>
 	</div>
   </div>
+</div>
 `)
 
+function close_playlist() {
+    document.querySelector('.music_list').style.setProperty('display', 'none', 'important');
+    let aud = document.querySelector("audio.fc-media");
+    if (aud) aud.pause();
+}
+
+function close_player() {
+    document.querySelector('.music-player').style.setProperty('display', 'none', 'important');
+    let aud = document.querySelector("audio.fc-media");
+    if (aud) aud.pause();
+    close_playlist();
+}
+
+function open_player_if_closed() {
+    document.querySelector('.music-player').style.removeProperty('display');
+}
+
 async function play(name2 = '') {
+
+    open_player_if_closed();
+
     const root = document.querySelector('.fc-media')
     const audio = root.querySelector('audio')
     var acc = name2.split('.');
@@ -178,7 +203,7 @@ play_pause = false
 $(document).on('keyup', function (e) {
     if (e.which === 80) { play_pause = !play_pause }
     if (play_pause == true) { aud.pause() }
-    else { aud.play() }
+    else { if (aud) aud.play() }
     if (e.which === 188) backward();
     if (e.which === 190) forward();
     if (e.which === 191) atp();
@@ -300,7 +325,9 @@ setTimeout(() => {
     dragElement(document.querySelector(".music_list"))
 
     $('.music_list #hide').click(() => {
-        console.log(check3);
+        // console.log(check3);
+
+        check3 = !check3;
 
         if (check3 == true) {
             $('.music_list #scroll').css('height', '0');

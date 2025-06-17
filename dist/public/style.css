@@ -35,6 +35,7 @@
 .icon-volume-up:before { content: '\e812'; } /* '' */
 .icon-volume-off:before { content: '\e800'; } /* '' */
 .icon-menu:before { content: '\e813'; } /* '' */
+.icon-close:before { content: '✖'; } /* '' */
 .icon-wheelchair:before { content: '\f193'; } /* '' */
 
 .icon-wheelchair{
@@ -53,6 +54,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.music_list #close_playlist {
+    width: 34px;
 }
 
 .music_list #scroll{
@@ -127,11 +132,11 @@
 #aud-info{
     width: fit-content !important;
     font-size: 13px !important;
-    bottom: 70% !important;
-    position: relative !important;
+    margin: 0;
+    position: absolute;
     display: inline-block !important;
     color: #999 !important;
-    animation: move 20s infinite linear !important;
+    animation: move 6s infinite linear !important;
 }
 
 @keyframes move{
